@@ -24,7 +24,17 @@ const NewTransactionForm = () => {
   const [open, setOpen] = React.useState(false);
 
   const createTransaction = () => {
-    if (Number.isNaN(Number(formData.amount)) || !formData.date.includes('-')) return;
+    if (
+      !formData.amount ||
+      Number.isNaN(Number(formData.amount)) ||
+      !formData.category ||
+      !formData.type ||
+      !formData.date ||
+      !formData.date.includes('-')
+    ) {
+      alert('Please fill in all the required fields correctly.');
+      return;
+    }
 
     if (incomeCategories.map((iC) => iC.type).includes(formData.category)) {
       setFormData({ ...formData, type: 'Income' });
@@ -84,12 +94,12 @@ const NewTransactionForm = () => {
       <Snackbar open={open} setOpen={setOpen} />
       <Grid item xs={12}>
         <Typography align="center" variant="subtitle2" gutterBottom>
-        {segment ? (
-        <div className="segment">
-          {segment.words.map((w) => w.value).join(" ")}
-        </div>
-      ) : null}
-         {/* {isSpeaking ? <BigTranscript /> : 'Start adding transactions'}  */}
+          {segment ? (
+            <div className="segment">
+              {segment.words.map((w) => w.value).join(" ")}
+            </div>
+          ) : null}
+          {/* {isSpeaking ? <BigTranscript /> : 'Start adding transactions'}  */}
         </Typography>
       </Grid>
       <Grid item xs={6}>

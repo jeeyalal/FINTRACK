@@ -22,6 +22,14 @@ export default makeStyles((theme) => ({
       paddingBottom: '200px',
     },
   },
+  footer: {
+   
+    padding: '12px 0',
+    textAlign: 'center',
+   
+    fontFamily: 'Arial, sans-serif',
+    color: '#333',
+  },
   grid: {
     '& > *': {
       margin: theme.spacing(2),
